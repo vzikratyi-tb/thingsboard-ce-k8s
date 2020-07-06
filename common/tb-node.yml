@@ -72,6 +72,10 @@ spec:
           value: "remote"
         - name: HTTP_LOG_CONTROLLER_ERROR_STACK_TRACE
           value: "false"
+        - name: METRICS_ENDPOINTS_EXPOSE
+          value: "prometheus"
+        - name: METRICS_ENABLED
+          value: "true"
         envFrom:
         - configMapRef:
             name: tb-node-db-config
@@ -95,6 +99,8 @@ kind: Service
 metadata:
   name: tb-node
   namespace: thingsboard
+  labels:
+    app: tb-node
 spec:
   type: ClusterIP
   selector:

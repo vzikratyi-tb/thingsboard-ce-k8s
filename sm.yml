@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tb-node-sm
+  labels:
+    team: tb-node
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: tb-node
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
